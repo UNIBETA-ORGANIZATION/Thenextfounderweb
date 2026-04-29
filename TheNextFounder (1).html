@@ -1826,16 +1826,14 @@ const themeToggle = document.getElementById('themeToggle');
 const sunIcon = document.getElementById('sunIcon');
 const moonIcon = document.getElementById('moonIcon');
 
-const savedTheme = localStorage.getItem('tnf-theme') || 'light';
-html.setAttribute('data-theme', savedTheme);
-updateThemeIcon(savedTheme);
+let currentTheme = 'light';
+html.setAttribute('data-theme', currentTheme);
+updateThemeIcon(currentTheme);
 
 themeToggle.addEventListener('click', () => {
-  const current = html.getAttribute('data-theme');
-  const next = current === 'light' ? 'dark' : 'light';
-  html.setAttribute('data-theme', next);
-  localStorage.setItem('tnf-theme', next);
-  updateThemeIcon(next);
+  currentTheme = currentTheme === 'light' ? 'dark' : 'light';
+  html.setAttribute('data-theme', currentTheme);
+  updateThemeIcon(currentTheme);
 });
 
 function updateThemeIcon(theme) {
